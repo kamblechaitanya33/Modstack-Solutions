@@ -1,4 +1,4 @@
-import { HeroSection } from "@/components/hero-section"
+import { HeroSection, PopupScreen } from "@/components/hero-section"
 import { ServicesOverview } from "@/components/services-overview"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { Header } from "@/components/header"
@@ -10,6 +10,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
+              <PopupScreen />
         <ServicesOverview />
         <TestimonialsSection />
       </main>
