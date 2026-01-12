@@ -13,9 +13,9 @@ export function Header() {
           {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-xl text-slate-900">
   <img
-    src="/modstackbg.png"
+    src="/modstack_horizontal.png"
     alt="Modstack Solutions Logo"
-  className="w-[130px] h-[140px] object-contain"  />
+  className="w-[180px] h-[180px] object-contain"  />
 </Link>
 
 
