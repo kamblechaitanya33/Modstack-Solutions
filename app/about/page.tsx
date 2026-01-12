@@ -3,28 +3,28 @@ import { Footer } from "@/components/footer"
 
 const teamMembers = [
   {
-    name: "Mustafa Khan",
+    // name: "Mustafa Khan",
     role: "Chief Technology Officer (CTO)",
     bio: "Expert in software architecture, cloud platforms, system scalability, and technical strategy.",
-    image: "/mustafa_cto.jpg",
+    // image: "/mustafa_cto.jpg",
   },
   {
-    name: "Sahil Ghodse",
+    // name: "Sahil Ghodse",
     role: "Chief Operating Officer (COO)",
     bio: "Oversees daily operations, project execution, and process optimization to ensure efficient delivery.",
-    image: "/sahil.png",
+    // image: "/sahil.png",
   },
   {
-    name: "Arbaaz Desai",
+    // name: "Arbaaz Desai",
     role: "Chief Financial Officer (CFO)",
     bio: "Manages company finances, budgeting, compliance, and financial planning for sustainable growth.",
-    image: "/arbaz.png",
+    // image: "/arbaz.png",
   },
   {
-    name: "Chaitanya Kamble",
+    // name: "Chaitanya Kamble",
     role: "Founder & CEO",
     bio: "Drives company vision, strategy, client relationships, and business growth with a strong tech background.",
-    image: "/chaitanya.png",
+    // image: "/chaitanya.png",
   },
 ]
 
@@ -106,11 +106,13 @@ export default function AboutPage() {
               {teamMembers.map((member, i) => (
                 <div key={i} className="text-center">
                   <img
-                    src={member.image || "/placeholder.svg"}
-                    alt={member.name}
+                    // src={member.image || "/placeholder.svg"}
+                    // alt={member.name}
                     className="w-full rounded-lg mb-4 aspect-square object-cover"
                   />
-                  <h3 className="text-xl font-bold text-[#0f172a] mb-1">{member.name}</h3>
+      {/* <h3 className="text-xl font-bold text-[#0f172a] mb-1">{member.name}</h3> */}
+
+
                   <p className="text-[#3b82f6] font-semibold mb-2">{member.role}</p>
                   <p className="text-[#6b7280] text-sm">{member.bio}</p>
                 </div>
