@@ -80,17 +80,17 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-[#cbd5e1]">
               <li>
                 Email:{" "}
-                <a href="mailto:hello@modstack.io" className="hover:text-white transition">
-                  hello@modstack.io
+                <a href="mailto:modstacksolutions@gmail.com" className="hover:text-white transition">
+                  modstacksolutions@gmail.com
                 </a>
               </li>
               <li>
                 Phone:{" "}
-                <a href="tel:+1234567890" className="hover:text-white transition">
-                  +1 (234) 567-890
+                <a href="tel:+91 9702571015" className="hover:text-white transition">
+                  +91 9702571015
                 </a>
               </li>
-              <li>Address: San Francisco, CA</li>
+              <li>Address: Mumbai,Maharashtra,India</li>
             </ul>
           </div>
         </div>

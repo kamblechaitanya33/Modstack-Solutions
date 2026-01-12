@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     "IT consulting",
   ],
   icons: {
-    icon: [
+    icon: [ 
       {
         url: "/icon-light-32x32.png",
         media: "(prefers-color-scheme: light)",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.svg",
+        url: "/icon_modss.svg",
         type: "image/svg+xml",
       },
     ],

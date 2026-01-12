@@ -73,21 +73,21 @@ export default function ContactPage() {
               {/* Contact Info */}
               <div className="p-8 rounded-xl bg-[#f9fafb] border border-[#e5e7eb]">
                 <h3 className="text-lg font-bold text-[#0f172a] mb-4">Email</h3>
-                <a href="mailto:hello@modstack.io" className="text-[#3b82f6] hover:text-[#1e40af] transition">
-                  hello@modstack.io
+                <a href="mailto:modstacksolutions@gmail.com" className="text-[#3b82f6] hover:text-[#1e40af] transition">
+                  modstacksolutions@gmail.com
                 </a>
               </div>
 
               <div className="p-8 rounded-xl bg-[#f9fafb] border border-[#e5e7eb]">
                 <h3 className="text-lg font-bold text-[#0f172a] mb-4">Phone</h3>
-                <a href="tel:+1234567890" className="text-[#3b82f6] hover:text-[#1e40af] transition">
-                  +1 (234) 567-890
+                <a href="tel:+91 9702571015" className="text-[#3b82f6] hover:text-[#1e40af] transition">
+                  +91 9702571015
                 </a>
               </div>
 
               <div className="p-8 rounded-xl bg-[#f9fafb] border border-[#e5e7eb]">
                 <h3 className="text-lg font-bold text-[#0f172a] mb-4">Location</h3>
-                <p className="text-[#6b7280]">San Francisco, CA 94105 United States</p>
+                <p className="text-[#6b7280]">Mumbai,Maharashtra,India</p>
               </div>
             </div>
 
