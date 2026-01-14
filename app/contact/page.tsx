@@ -1,10 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState, type FormEvent } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { Mail, Phone, MapPin, Send } from "lucide-react"
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -36,146 +36,174 @@ export default function ContactPage() {
         body: JSON.stringify(formData),
       })
 
-      if (!response.ok) {
-        throw new Error("Failed to submit form")
-      }
+      if (!response.ok) throw new Error("Failed to submit form")
 
       setSuccess(true)
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
-
-      // Reset success message after 5 seconds
       setTimeout(() => setSuccess(false), 5000)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred")
+      setError(err instanceof Error ? err.message : "Something went wrong")
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#f8fafc]">
       <Header />
+
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h1>
-            <p className="text-lg text-[#cbd5e1] max-w-2xl">
-              Let's discuss how we can help transform your business with modern technology solutions.
-            </p>
-          </div>
-        </section>
+        {/* HERO */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617] text-white py-20">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.25),transparent_70%)]" />
 
-        {/* Contact Section */}
-        <section className="py-20 bg-white">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              {/* Contact Info */}
-              <div className="p-8 rounded-xl bg-[#f9fafb] border border-[#e5e7eb]">
-                <h3 className="text-lg font-bold text-[#0f172a] mb-4">Email</h3>
-                <a href="mailto:modstacksolutions@gmail.com" className="text-[#3b82f6] hover:text-[#1e40af] transition">
-                  modstacksolutions@gmail.com
-                </a>
-              </div>
+  <div className="relative mx-auto max-w-7xl px-4 w-full">
+    <h1 className="text-5xl font-extrabold tracking-tight mb-4">
+      Let’s Build Something Great
+    </h1>
 
-              <div className="p-8 rounded-xl bg-[#f9fafb] border border-[#e5e7eb]">
-                <h3 className="text-lg font-bold text-[#0f172a] mb-4">Phone</h3>
-                <a href="tel:+91 9702571015" className="text-[#3b82f6] hover:text-[#1e40af] transition">
-                  +91 9702571015
-                </a>
-              </div>
+    <p className="max-w-2xl text-lg text-slate-300">
+      Reach out to discuss your ideas, projects, or collaborations.
+    </p>
+  </div>
+</section>
 
-              <div className="p-8 rounded-xl bg-[#f9fafb] border border-[#e5e7eb]">
-                <h3 className="text-lg font-bold text-[#0f172a] mb-4">Location</h3>
-                <p className="text-[#6b7280]">Mumbai,Maharashtra,India</p>
-              </div>
+        {/* CONTACT CONTENT */}
+        <section className="py-24">
+          <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+            {/* INFO CARDS – VERTICALLY CENTERED */}
+            <div className="flex flex-col justify-center space-y-6 min-h-full">
+              {[
+                {
+                  icon: <Mail />,
+                  title: "Email",
+                  value: "modstacksolutions@gmail.com",
+                  href: "mailto:modstacksolutions@gmail.com",
+                },
+                {
+                  icon: <Phone />,
+                  title: "Phone",
+                  value: "+91 9702571015",
+                  href: "tel:+919702571015",
+                },
+                {
+                  icon: <MapPin />,
+                  title: "Location",
+                  value: "Mumbai, Maharashtra, India",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-4 p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition"
+                >
+                  <div className="p-3 rounded-xl bg-blue-50 text-blue-600">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-slate-900">{item.title}</h3>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="text-blue-600 hover:underline"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-slate-600">{item.value}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
-
-            {/* Contact Form */}
-            <div className="bg-[#f9fafb] p-8 rounded-xl border border-[#e5e7eb]">
-              <h2 className="text-3xl font-bold text-[#0f172a] mb-8">Send us a Message</h2>
+            {/* FORM */}
+            <div className="lg:col-span-2 bg-white/80 backdrop-blur rounded-3xl shadow-xl border border-slate-200 p-10">
+              <h2 className="text-3xl font-bold text-slate-900 mb-6">
+                Send a Message
+              </h2>
 
               {success && (
-                <div className="mb-6 p-4 bg-[#dcfce7] border border-[#22c55e] text-[#166534] rounded-lg">
-                  Thank you for your message! We'll get back to you shortly.
+                <div className="mb-6 rounded-lg bg-green-100 text-green-700 px-4 py-3">
+                  ✅ Message sent successfully!
                 </div>
               )}
 
               {error && (
-                <div className="mb-6 p-4 bg-[#fee2e2] border border-[#ef4444] text-[#991b1b] rounded-lg">{error}</div>
+                <div className="mb-6 rounded-lg bg-red-100 text-red-700 px-4 py-3">
+                  ❌ {error}
+                </div>
               )}
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-[#374151] font-semibold mb-2">Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-[#d1d5db] focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6] outline-none transition"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[#374151] font-semibold mb-2">Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-[#d1d5db] focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6] outline-none transition"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-[#374151] font-semibold mb-2">Phone (Optional)</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
+                  <Input
+                    label="Name"
+                    name="name"
+                    value={formData.name}
+                    placeholder="Enter your name"
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-[#d1d5db] focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6] outline-none transition"
-                    placeholder="+1 (234) 567-890"
+                  />
+
+                  <Input
+                    label="Email ID"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    placeholder="Enter your email address"
+                    onChange={handleChange}
                   />
                 </div>
 
-                <div>
-                  <label className="block text-[#374151] font-semibold mb-2">Subject</label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-[#d1d5db] focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6] outline-none transition"
-                    placeholder="Project Inquiry"
-                  />
-                </div>
+                <Input
+                  label="Phone No"
+                  name="phone"
+                  value={formData.phone}
+                  placeholder="Enter your phone number"
+                  onChange={handleChange}
+                />
 
+                <Input
+                  label="Subject"
+                  name="subject"
+                  value={formData.subject}
+                  placeholder="Enter subject"
+                  onChange={handleChange}
+                />
+
+                {/* MESSAGE */}
                 <div>
-                  <label className="block text-[#374151] font-semibold mb-2">Message</label>
+                  <label className="block text-sm font-semibold text-slate-700">
+                    Message
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 rounded-lg border border-[#d1d5db] focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6] outline-none transition resize-none"
-                    placeholder="Tell us about your project..."
+                    placeholder="Describe your project..."
+                    className="
+        mt-2 w-full h-40 rounded-xl border border-slate-300
+        px-4 py-3 text-slate-800
+        focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+        outline-none resize-none overflow-y-auto
+        placeholder:text-slate-400
+      "
                   />
                 </div>
 
+                {/* SUBMIT */}
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full px-6 py-3 bg-[#3b82f6] text-white rounded-lg font-semibold hover:bg-[#1e40af] transition disabled:bg-[#9ca3af] cursor-pointer"
+                  className="
+      w-full flex items-center justify-center gap-2
+      rounded-xl bg-blue-600 px-6 py-4
+      font-semibold text-white
+      hover:bg-blue-700 transition
+      disabled:opacity-60 disabled:cursor-not-allowed
+    "
                 >
+                  <Send size={18} />
                   {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
@@ -183,7 +211,29 @@ export default function ContactPage() {
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   )
 }
+
+function Input({ label, ...props }: any) {
+  return (
+    <div>
+      <label className="block text-sm font-semibold text-slate-700">
+        {label}
+      </label>
+      <input
+        {...props}
+        className="
+          mt-2 w-full rounded-xl border border-slate-300
+          px-4 py-3 text-slate-800
+          focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+          outline-none
+          placeholder:text-slate-400
+        "
+      />
+    </div>
+  )
+}
+

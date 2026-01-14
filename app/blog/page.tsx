@@ -70,14 +70,19 @@ export default function BlogPage() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Blog</h1>
-            <p className="text-lg text-[#cbd5e1] max-w-2xl">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617] text-white py-20">
+          {/* Radial Glow Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.25),transparent_70%)]" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+              Blog
+            </h1>
+            <p className="text-lg text-slate-300 max-w-2xl">
               Insights, tips, and best practices from our team of technology experts
             </p>
           </div>
         </section>
+
 
         {/* Blog Posts Grid */}
         <section className="py-20 bg-white">
@@ -114,22 +119,48 @@ export default function BlogPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-[#f9fafb] py-20">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold text-[#0f172a] mb-4">Subscribe to Our Newsletter</h2>
-            <p className="text-[#6b7280] mb-8">Get the latest insights and best practices delivered to your inbox.</p>
-            <div className="flex gap-2 max-w-md mx-auto">
+        <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 py-24 text-white">
+          {/* Decorative background blur */}
+          <div className="absolute inset-0">
+            <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+          </div>
+
+          <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
+              Subscribe to Our Newsletter
+            </h2>
+
+            <p className="text-lg md:text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Get the latest insights and best practices delivered straight to your inbox.
+            </p>
+
+            <div className="mx-auto flex max-w-md flex-col sm:flex-row gap-3">
               <input
                 type="email"
                 placeholder="your@email.com"
-                className="flex-1 px-4 py-3 rounded-lg border border-[#d1d5db] focus:border-[#3b82f6] focus:ring-2 focus:ring-[#3b82f6] outline-none transition"
+                className="flex-1 rounded-xl px-5 py-4 
+             text-white placeholder-white/70 
+             bg-transparent 
+             border border-white/60 
+             outline-none 
+             focus:border-white 
+             focus:ring-2 focus:ring-white/80 
+             transition"
               />
-              <button className="px-6 py-3 bg-[#3b82f6] text-white rounded-lg font-semibold hover:bg-[#1e40af] transition">
+
+
+              <button className="rounded-xl bg-white px-8 py-4 text-lg font-semibold text-blue-600 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:bg-blue-50">
                 Subscribe
               </button>
             </div>
+
+            <p className="mt-4 text-sm text-blue-200">
+              No spam. Unsubscribe anytime.
+            </p>
           </div>
         </section>
+
       </main>
       <Footer />
     </div>

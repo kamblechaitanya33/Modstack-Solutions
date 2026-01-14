@@ -7,17 +7,21 @@ import Image from "next/image"
 
 export function HeroSection() {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white flex items-center">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-20">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617] text-white flex items-center">
+      {/* Radial Glow Overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.25),transparent_70%)]" />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-20">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
             Complete IT & Software Solutions for Modern Business
           </h1>
-          <p className="text-lg md:text-xl text-[#cbd5e1] mb-8 max-w-2xl">
-            Transform your business with reliable, modern, and scalable digital solutions. From web and mobile apps to
-            cloud in
-            frastructure and IT consulting.
+
+          <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl">
+            Transform your business with reliable, modern, and scalable digital solutions. From web and mobile apps to cloud
+            infrastructure and IT consulting.
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contact"
@@ -25,6 +29,7 @@ export function HeroSection() {
             >
               Get Started
             </Link>
+
             <Link
               href="/portfolio"
               className="px-8 py-4 border-2 border-[#3b82f6] text-[#3b82f6] rounded-lg font-semibold hover:bg-[#3b82f6] hover:text-white transition text-center"
@@ -113,7 +118,7 @@ export function HeroSection() {
 //             </button>
 //           </div>
 
-//           {/* 
+//           {/*
 
 //           <div className="md:w-1/2 p-6 md:p-10 flex flex-col justify-center text-center md:text-left">
 //             <span className="inline-block mb-2 text-sm font-semibold tracking-wide text-blue-600 uppercase">

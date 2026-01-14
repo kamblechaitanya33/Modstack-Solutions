@@ -45,10 +45,16 @@ export default function PortfolioPage() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Portfolio</h1>
-            <p className="text-lg text-[#cbd5e1] max-w-2xl">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617] text-white py-20">
+          {/* Radial Glow Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.25),transparent_70%)]" />
+
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+              Our Portfolio
+            </h1>
+
+            <p className="text-lg text-slate-300 max-w-2xl">
               Showcase of projects where we've helped businesses achieve their goals
             </p>
           </div>
@@ -62,11 +68,10 @@ export default function PortfolioPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category === "All" ? null : category)}
-                  className={`px-4 py-2 rounded-lg font-medium transition ${
-                    (category === "All" && selectedCategory === null) || selectedCategory === category
-                      ? "bg-[#3b82f6] text-white"
-                      : "bg-[#f3f4f6] text-[#374151] hover:bg-[#e5e7eb]"
-                  }`}
+                  className={`px-4 py-2 rounded-lg font-medium transition ${(category === "All" && selectedCategory === null) || selectedCategory === category
+                    ? "bg-[#3b82f6] text-white"
+                    : "bg-[#f3f4f6] text-[#374151] hover:bg-[#e5e7eb]"
+                    }`}
                 >
                   {category}
                 </button>
@@ -133,20 +138,33 @@ export default function PortfolioPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-[#3b82f6] text-white py-20">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl font-bold mb-4">Want to Bring Your Vision to Life?</h2>
-            <p className="text-lg text-[#dbeafe] mb-8">
-              Let's discuss how we can help create something amazing for your business.
+        <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 py-24 text-white">
+          {/* Decorative background blur */}
+          <div className="absolute inset-0">
+            <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+          </div>
+
+          <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">
+              Want to Bring Your Vision to Life?
+            </h2>
+
+            <p className="text-lg md:text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Let’s discuss how we can help create something amazing for your business.
             </p>
-            <a
-              href="/contact"
-              className="px-8 py-4 bg-white text-[#3b82f6] rounded-lg font-semibold hover:bg-[#f0f9ff] transition inline-block"
-            >
-              Get in Touch
-            </a>
+
+            <div className="flex items-center justify-center">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-xl bg-white px-10 py-4 text-lg font-semibold text-blue-600 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:bg-blue-50"
+              >
+                Get in Touch
+              </a>
+            </div>
           </div>
         </section>
+
       </main>
       <Footer />
     </div>

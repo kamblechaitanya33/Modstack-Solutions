@@ -53,13 +53,20 @@ export default function AboutPage() {
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-[#0f172a] to-[#1e293b] text-white py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">About Modstack Solutions</h1>
-            <p className="text-lg text-[#cbd5e1] max-w-2xl">Transforming businesses through technology</p>
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617] text-white py-20">
+          {/* Radial Glow Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.25),transparent_70%)]" />
+
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+              About Modstack Solutions
+            </h1>
+
+            <p className="text-lg text-slate-300 max-w-2xl">
+              Transforming businesses through technology
+            </p>
           </div>
         </section>
-
         {/* Our Story */}
         <section className="py-20 bg-white">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -110,7 +117,7 @@ export default function AboutPage() {
                     alt={member.name}
                     className="w-full rounded-lg mb-4 aspect-square object-cover"
                   />
-      { <h3 className="text-xl font-bold text-[#0f172a] mb-1">{member.name}</h3> }
+                  {<h3 className="text-xl font-bold text-[#0f172a] mb-1">{member.name}</h3>}
 
 
                   <p className="text-[#3b82f6] font-semibold mb-2">{member.role}</p>
@@ -122,25 +129,44 @@ export default function AboutPage() {
         </section>
 
         {/* Stats */}
-        <section className="bg-[#0f172a] text-white py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-5xl font-bold text-[#3b82f6] mb-2">200+</div>
-                <p className="text-[#cbd5e1]">Projects Delivered</p>
+        <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 py-24 text-white">
+          {/* Decorative background blur */}
+          <div className="absolute inset-0">
+            <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 text-center">
+
+              <div className="group">
+                <div className="text-5xl font-extrabold text-white mb-3 transition-transform duration-300 group-hover:scale-110">
+                  200+
+                </div>
+                <p className="text-blue-100 text-lg">Projects Delivered</p>
               </div>
-              <div>
-                <div className="text-5xl font-bold text-[#3b82f6] mb-2">50+</div>
-                <p className="text-[#cbd5e1]">Team Members</p>
+
+              <div className="group">
+                <div className="text-5xl font-extrabold text-white mb-3 transition-transform duration-300 group-hover:scale-110">
+                  50+
+                </div>
+                <p className="text-blue-100 text-lg">Team Members</p>
               </div>
-              <div>
-                <div className="text-5xl font-bold text-[#3b82f6] mb-2">30+</div>
-                <p className="text-[#cbd5e1]">Countries Served</p>
+
+              <div className="group">
+                <div className="text-5xl font-extrabold text-white mb-3 transition-transform duration-300 group-hover:scale-110">
+                  30+
+                </div>
+                <p className="text-blue-100 text-lg">Countries Served</p>
               </div>
-              <div>
-                <div className="text-5xl font-bold text-[#3b82f6] mb-2">9+</div>
-                <p className="text-[#cbd5e1]">Years of Excellence</p>
+
+              <div className="group">
+                <div className="text-5xl font-extrabold text-white mb-3 transition-transform duration-300 group-hover:scale-110">
+                  9+
+                </div>
+                <p className="text-blue-100 text-lg">Years of Excellence</p>
               </div>
+
             </div>
           </div>
         </section>

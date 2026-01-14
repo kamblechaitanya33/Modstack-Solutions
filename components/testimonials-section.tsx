@@ -35,35 +35,55 @@ const testimonials = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-20 bg-[#f9fafb]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-[#0f172a] mb-4 text-center">What Our Clients Say</h2>
-        <p className="text-lg text-[#6b7280] text-center mb-12 max-w-2xl mx-auto">
-          Real feedback from companies we've partnered with to transform their business
-        </p>
+  <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 py-24 text-white">
+  {/* Decorative background blur */}
+  <div className="absolute inset-0">
+    <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+    <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+  </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.map((testimonial, i) => (
-            <div key={i} className="bg-white p-6 rounded-xl border border-[#e5e7eb] hover:shadow-lg transition">
-              <div className="flex gap-1 mb-4">
-                {Array(testimonial.rating)
-                  .fill(0)
-                  .map((_, j) => (
-                    <span key={j} className="text-yellow-400">
-                      ★
-                    </span>
-                  ))}
-              </div>
-              <p className="text-[#6b7280] mb-6 leading-relaxed">"{testimonial.content}"</p>
-              <div className="border-t border-[#e5e7eb] pt-4">
-                <p className="font-semibold text-[#0f172a]">{testimonial.name}</p>
-                <p className="text-sm text-[#3b82f6]">{testimonial.role}</p>
-                <p className="text-sm text-[#6b7280]">{testimonial.company}</p>
-              </div>
-            </div>
-          ))}
+  <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4">
+      What Our Clients Say
+    </h2>
+
+    <p className="text-lg md:text-xl text-blue-100 text-center mb-14 max-w-2xl mx-auto leading-relaxed">
+      Real feedback from companies we’ve partnered with to transform their business.
+    </p>
+
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {testimonials.map((testimonial, i) => (
+        <div
+          key={i}
+          className="group rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 p-6 transition-all duration-300 hover:-translate-y-2 hover:bg-white/15 hover:shadow-2xl"
+        >
+          {/* Rating */}
+          <div className="flex gap-1 mb-4">
+            {Array(testimonial.rating)
+              .fill(0)
+              .map((_, j) => (
+                <span key={j} className="text-yellow-400 text-lg">
+                  ★
+                </span>
+              ))}
+          </div>
+
+          {/* Content */}
+          <p className="text-blue-100 mb-6 leading-relaxed">
+            “{testimonial.content}”
+          </p>
+
+          {/* Author */}
+          <div className="border-t border-white/20 pt-4">
+            <p className="font-semibold text-white">{testimonial.name}</p>
+            <p className="text-sm text-blue-200">{testimonial.role}</p>
+            <p className="text-sm text-blue-300">{testimonial.company}</p>
+          </div>
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
+  </div>
+</section>
+
   )
 }
