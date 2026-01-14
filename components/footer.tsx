@@ -11,14 +11,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10 text-sm text-neutral-700">
 
           <div>
-            <h3 className="font-semibold mb-3 text-neutral-900">Modstack Solutions</h3>
+            <h3 className="text-[15px] font-semibold mb-3 text-neutral-900">Modstack Solutions</h3>
             <p className="leading-relaxed">
               Complete IT and software services delivering reliable, modern, and scalable digital solutions.
             </p>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-neutral-900">Services</h4>
+            <h4 className="text-[15px] font-semibold mb-3 text-neutral-900">Services</h4>
             <ul className="space-y-2">
               <li><Link href="/services#web" className="hover:text-black transition">Web Development</Link></li>
               <li><Link href="/services#mobile" className="hover:text-black transition">Mobile Apps</Link></li>
@@ -31,7 +31,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-neutral-900">Company</h4>
+            <h4 className="text-[15px] font-semibold mb-3 text-neutral-900">Company</h4>
             <ul className="space-y-2">
               <li><Link href="/about" className="hover:text-black transition">About Us</Link></li>
               <li><Link href="/portfolio" className="hover:text-black transition">Portfolio</Link></li>
@@ -41,7 +41,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3 text-neutral-900">Get in Touch</h4>
+            <h4 className="text-[15px] font-semibold mb-3 text-neutral-900">Get in Touch</h4>
             <ul className="space-y-2">
               <li>Email: <a href="mailto:modstacksolutions@gmail.com" className="hover:text-black transition">modstacksolutions@gmail.com</a></li>
               <li>Phone: <a href="tel:+919702571015" className="hover:text-black transition">+91 9702571015</a></li>

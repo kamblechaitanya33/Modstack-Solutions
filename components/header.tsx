@@ -224,9 +224,16 @@ export function Header() {
         <div className="flex h-12 items-center justify-between">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image src="/modstack_horizontal.png" alt="Logo" width={140} height={60} priority />
-          </Link>
+             <Link href="/" className="flex items-center">
+        <Image
+          src="/modstackbg.png"
+          alt="Modstack Solutions Logo"
+          width={140}
+          height={60}
+          priority
+          className="h-25 w-auto object-contain"
+        />
+      </Link>
 
           {/* Desktop Menu */}
           <div className="relative hidden md:flex items-center gap-10 text-sm font-medium" ref={containerRef}>
@@ -264,9 +271,8 @@ export function Header() {
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-            mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          }`}
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="mt-2 rounded-xl bg-white shadow-lg border border-neutral-200">
             {navItems.map(item => (
@@ -274,11 +280,10 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-3 transition ${
-                  pathname === item.href
-                    ? "text-blue-600 font-medium bg-blue-50"
-                    : "text-neutral-700 hover:bg-neutral-100"
-                }`}
+                className={`block px-4 py-3 transition ${pathname === item.href
+                  ? "text-blue-600 font-medium bg-blue-50"
+                  : "text-neutral-700 hover:bg-neutral-100"
+                  }`}
               >
                 {item.name}
               </Link>
