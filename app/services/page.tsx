@@ -18,7 +18,7 @@ const detailedServices = [
       "Scalable cloud-ready deployments",
     ],
     technologies: ["React", "Next.js", "ASP.NET", "Node.js", "PostgreSQL"],
-    icon: "🌐",
+    icon: "",
     imagePath: "web_development_icon.png",
   },
   {
@@ -36,7 +36,7 @@ const detailedServices = [
       "Analytics and crash monitoring",
     ],
     technologies: ["Android", "iOS", "Flutter", "React Native"],
-    icon: "📱",
+    icon: "",
     imagePath: "mobile_applicaion_icon.png",
   },
   {
@@ -55,9 +55,34 @@ const detailedServices = [
       "Microservices architecture",
     ],
     technologies: ["AWS", "Azure", "Google Cloud", "Docker"],
-    icon: "☁️",
+    icon: "",
     imagePath: "api_icon.png",
   },
+
+  {
+    id: "ai",
+    title: "Artificial Intelligence & Machine Learning",
+    description: "Intelligent solutions that automate, predict, and enhance business operations.",
+    fullDescription:
+      "We build AI-powered solutions that help businesses automate processes, gain insights from data, and deliver smarter user experiences. From predictive analytics to intelligent automation, our AI services are designed to be scalable, secure, and business-focused.",
+    features: [
+      "Custom AI and machine learning model development",
+      "Predictive analytics and forecasting",
+      "Natural language processing (NLP) solutions",
+      "AI-powered chatbots and virtual assistants",
+      "Computer vision and image recognition",
+      "Data analysis, model training, and optimization",
+    ],
+    technologies: [
+      "OpenAI API",
+      "Python",
+      "TensorFlow",
+      "PyTorch",
+    ],
+    icon: "",
+    imagePath: "aiimage.png",
+  },
+
   {
     id: "exe",
     title: "Desktop & Executable Solutions",
@@ -73,7 +98,7 @@ const detailedServices = [
       "Secure local data handling",
     ],
     technologies: [".NET", "C#", "SQLite", "PostgreSQL"],
-    icon: "💻",
+    icon: "",
     imagePath: "exe_icon.png",
   },
   {
@@ -91,7 +116,7 @@ const detailedServices = [
       "Accessibility-focused layouts",
     ],
     technologies: ["Figma", "Photoshop", "Illustrator"],
-    icon: "🎨",
+    icon: "",
     imagePath: "uiux_icon.png",
   },
   {
@@ -110,7 +135,7 @@ const detailedServices = [
 
     ],
     technologies: ["DevOps", "CI/CD", "Monitoring Tools", "Automated Testing"],
-    icon: "🔧",
+    icon: "",
     imagePath: "it_support_icon.png",
   },
 ];
@@ -150,7 +175,7 @@ export default function ServicesPage() {
             </p>
             <a
               href="/contact"
-              className="px-8 py-4 bg-white text-[#3b82f6] rounded-lg font-semibold hover:bg-[#f0f9ff] transition inline-block"
+              className="px-8 py-4 bg-white text-[3#3b82f6] rounded-lg font-semibold hover:bg-[#f0f9ff] transition inline-block"
             >
               Start Your Project
             </a>

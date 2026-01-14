@@ -39,106 +39,106 @@ export function HeroSection() {
 
 }
 
-export function PopupScreen() {
-  const [showPopup, setShowPopup] = useState(false)
+// export function PopupScreen() {
+//   const [showPopup, setShowPopup] = useState(false)
 
-  useEffect(() => {
-    setShowPopup(true)
-  }, [])
+//   useEffect(() => {
+//     setShowPopup(true)
+//   }, [])
 
-  if (!showPopup) return null
+//   if (!showPopup) return null
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
-      <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-gradient-to-br from-white to-slate-100 shadow-2xl animate-fadeIn">
+//   return (
+//     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4">
+//       <div className="relative w-full max-w-4xl overflow-hidden rounded-2xl bg-gradient-to-br from-white to-slate-100 shadow-2xl animate-fadeIn">
 
-        {/* ❌ Close Icon */}
-        <button
-          onClick={() => setShowPopup(false)}
-          className="absolute top-4 right-4 z-10 text-gray-500 hover:text-black text-xl font-semibold transition"
-        >
-          ✕
-        </button>
+//         {/* ❌ Close Icon */}
+//         <button
+//           onClick={() => setShowPopup(false)}
+//           className="absolute top-4 right-4 z-10 text-gray-500 hover:text-black text-xl font-semibold transition"
+//         >
+//           ✕
+//         </button>
 
-        {/* 🔹 CONTENT WRAPPER */}
-        <div className="flex flex-col md:flex-row">
+//         {/* 🔹 CONTENT WRAPPER */}
+//         <div className="flex flex-col md:flex-row">
 
 
-          {/* <div className="md:w-1/2 p-5 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-            <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
-              <Image
-                src="/image1.jpg"
-                alt="Birthday Celebration"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-          </div> */}
+//           {/* <div className="md:w-1/2 p-5 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+//             <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
+//               <Image
+//                 src="/image1.jpg"
+//                 alt="Birthday Celebration"
+//                 fill
+//                 className="object-contain"
+//                 priority
+//               />
+//             </div>
+//           </div> */}
 
-          {<div className="md:w-1/2 p-5 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-            <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
-              <video
-                src="/birthday.mp4"
-                controls
-                autoPlay
-                muted
-                loop
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>}
+//           {<div className="md:w-1/2 p-5 flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+//             <div className="relative w-full max-w-[420px] aspect-[3/4] rounded-xl overflow-hidden shadow-xl">
+//               <video
+//                 src="/birthday.mp4"
+//                 controls
+//                 autoPlay
+//                 muted
+//                 loop
+//                 className="w-full h-full object-cover"
+//               />
+//             </div>
+//           </div>}
 
-          {/* 📝 TEXT SECTION */}
-          <div className="md:w-1/2 p-6 md:p-10 flex flex-col justify-center text-center md:text-left">
-            <span className="inline-block mb-2 text-sm font-semibold tracking-wide text-blue-600 uppercase">
-              New Office Opening 🎉
-            </span>
+//           {/* 📝 TEXT SECTION */}
+//           <div className="md:w-1/2 p-6 md:p-10 flex flex-col justify-center text-center md:text-left">
+//             <span className="inline-block mb-2 text-sm font-semibold tracking-wide text-blue-600 uppercase">
+//               New Office Opening 🎉
+//             </span>
 
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
-              We’re Open! <span className="text-blue-600">Modstack Solutions</span>
-            </h2>
+//             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+//               We’re Open! <span className="text-blue-600">Modstack Solutions</span>
+//             </h2>
 
-            <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
-              Today marks a new milestone for <strong>Modstack Solutions</strong>.
-              We’re excited to announce the grand opening of our new office—built to
-              innovate, collaborate, and deliver exceptional digital solutions.
-            </p>
+//             <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
+//               Today marks a new milestone for <strong>Modstack Solutions</strong>.
+//               We’re excited to announce the grand opening of our new office—built to
+//               innovate, collaborate, and deliver exceptional digital solutions.
+//             </p>
 
-            <button
-              onClick={() => setShowPopup(false)}
-              className="mx-auto md:mx-0 inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all"
-            >
-              🎁 Close
-            </button>
-          </div>
+//             <button
+//               onClick={() => setShowPopup(false)}
+//               className="mx-auto md:mx-0 inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all"
+//             >
+//               🎁 Close
+//             </button>
+//           </div>
 
-          {/* 
+//           {/* 
 
-          <div className="md:w-1/2 p-6 md:p-10 flex flex-col justify-center text-center md:text-left">
-            <span className="inline-block mb-2 text-sm font-semibold tracking-wide text-blue-600 uppercase">
-              New Office Innogration
-            </span>
+//           <div className="md:w-1/2 p-6 md:p-10 flex flex-col justify-center text-center md:text-left">
+//             <span className="inline-block mb-2 text-sm font-semibold tracking-wide text-blue-600 uppercase">
+//               New Office Innogration
+//             </span>
 
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
-               <span className="text-blue-600">Arbaz</span> 🎉
-            </h2>
+//             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 leading-tight">
+//                <span className="text-blue-600">Arbaz</span> 🎉
+//             </h2>
 
-            <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
-              From the <strong>Modstack Solutions</strong> team —
-              wishing you a day full of smiles, success, and unforgettable moments.
-            </p>
+//             <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
+//               From the <strong>Modstack Solutions</strong> team —
+//               wishing you a day full of smiles, success, and unforgettable moments.
+//             </p>
 
-            <button
-              onClick={() => setShowPopup(false)}
-              className="mx-auto md:mx-0 inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all"
-            >
-              🎁 Close
-            </button>
-          </div> */}
+//             <button
+//               onClick={() => setShowPopup(false)}
+//               className="mx-auto md:mx-0 inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition-all"
+//             >
+//               🎁 Close
+//             </button>
+//           </div> */}
 
-        </div>
-      </div>
-    </div>
-  )
-}
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
