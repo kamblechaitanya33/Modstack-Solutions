@@ -23,7 +23,7 @@ export function Footer() {
               <li><Link href="/services#web" className="hover:text-black transition">Web Development</Link></li>
               <li><Link href="/services#mobile" className="hover:text-black transition">Mobile Apps</Link></li>
               <li><Link href="/services#cloud" className="hover:text-black transition">API & Cloud Solutions</Link></li>
-              <li><Link href="/services#cloud" className="hover:text-black transition">Ai & Machine Learning</Link></li>
+              <li><Link href="/services#ai" className="hover:text-black transition">Ai & Machine Learning</Link></li>
               <li><Link href="/services#exe" className="hover:text-black transition">Desktop & Executable Solutions</Link></li>
               <li><Link href="/services#uiux" className="hover:text-black transition">UI/UX & Graphic Design</Link></li>
               <li><Link href="/services#support" className="hover:text-black transition">Support & Maintenance</Link></li>

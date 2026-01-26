@@ -4,64 +4,81 @@ const services = [
   {
     id: "web",
     title: "Web Development",
-    description: "Custom, secure and scalable web solutions tailored to your business needs.",
-    icon: "🌐",
+    description:
+      "Custom, secure and scalable web solutions tailored to your business needs.",
+    icon: "",
   },
   {
     id: "mobile",
     title: "Mobile Application Development",
-    description: "Robust and user-friendly mobile apps for Android and iOS platforms.",
-    icon: "📱",
+    description:
+      "Robust and user-friendly mobile apps for Android and iOS platforms.",
+    icon: "",
   },
   {
-    id: "cloud",
-    title: "API & Cloud Solutions",
-    description: "Secure, scalable APIs and cloud infrastructure to power your applications.",
-    icon: "☁️",
-  },
-  {
-    id: "exe",
-    title: "Desktop & Executable Solutions",
-    description: "Reliable desktop and executable software for business automation.",
-    icon: "💻",
-  },
-  {
-    id: "uiux",
-    title: "UI/UX & Graphic Design",
-    description: "Visually compelling and user-centered designs that elevate your brand.",
-    icon: "🎨",
-  },
-  {
-    id: "support",
-    title: "Support & Maintenance",
-    description: "Reliable support, monitoring, and continuous improvement for your systems.",
-    icon: "🔧",
+    id: "ai",
+    title: "Artificial Intelligence & Machine Learning",
+    description:
+      "Intelligent solutions that automate, predict, and enhance business operations.",
+    icon: "",
   },
 ]
 
 export function ServicesOverview() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-16 bg-gradient-to-b from-white to-[#f8fafc]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0f172a] mb-4">Our Services</h2>
-          <p className="text-lg text-[#6b7280] max-w-2xl">
-            Comprehensive technology solutions tailored to your business needs
+
+        {/* Header */}
+        <div className="mb-12 max-w-3xl">
+
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0f172a] mb-4 leading-tight">
+            Solutions for growing businesses
+          </h2>
+
+          <p className="text-base text-[#64748b]">
+            We build scalable, secure, and future-ready digital products tailored to your goals.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
             <div
               key={service.id}
-              className="p-8 rounded-xl border border-[#e5e7eb] hover:border-[#3b82f6] hover:shadow-lg transition bg-white"
+              className="
+                group
+                relative
+                flex flex-col
+                gap-3
+                p-6
+                rounded-2xl
+                bg-white/80 backdrop-blur
+                border border-[#2563eb]
+                shadow-sm
+                hover:shadow-lg
+                transition-all duration-300
+                hover:-translate-y-0.5
+              "
             >
-              <div className="text-4xl mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold text-[#0f172a] mb-2">{service.title}</h3>
-              <p className="text-[#6b7280] mb-4">{service.description}</p>
+              {/* Subtle gradient hover */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#2563eb]/10 to-transparent opacity-0 group-hover:opacity-100 transition pointer-events-none" />
+
+              <div className="relative z-10 text-3xl">
+                {service.icon}
+              </div>
+
+              <h3 className="relative z-10 text-lg font-semibold text-[#0f172a]">
+                {service.title}
+              </h3>
+
+              <p className="relative z-10 text-sm text-[#64748b] leading-relaxed">
+                {service.description}
+              </p>
+
               <Link
                 href={`/services#${service.id}`}
-                className="text-[#3b82f6] font-semibold hover:text-[#1e40af] transition"
+                className="relative z-10 mt-auto inline-flex items-center gap-1.5 text-sm text-[#2563eb] font-semibold hover:gap-2 transition-all"
               >
                 Learn more →
               </Link>
@@ -69,14 +86,26 @@ export function ServicesOverview() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        {/* CTA */}
+        <div className="mt-12 text-center">
           <Link
             href="/services"
-            className="px-8 py-4 bg-[#3b82f6] text-white rounded-lg font-semibold hover:bg-[#1e40af] transition inline-block"
+            className="
+              inline-flex items-center justify-center
+              px-8 py-3
+              rounded-lg
+              bg-gradient-to-r from-[#2563eb] to-[#1e40af]
+              text-sm text-white
+              font-semibold
+              shadow-md
+              hover:shadow-lg
+              transition-all
+            "
           >
             Explore All Services
           </Link>
         </div>
+
       </div>
     </section>
   )

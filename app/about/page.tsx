@@ -129,8 +129,8 @@ export default function AboutPage() {
         </section> */}
 
         {/* Stats */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 py-24 text-white">
-          {/* Decorative background blur */}
+        {/* <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 py-24 text-white">
+      
           <div className="absolute inset-0">
             <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
             <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
@@ -169,7 +169,56 @@ export default function AboutPage() {
 
             </div>
           </div>
+        </section> */}
+
+        {/* Focus Areas */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-indigo-700 py-24 text-white">
+          {/* Decorative background blur */}
+          <div className="absolute inset-0">
+            <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute -bottom-24 -right-24 h-96 w-96 rounded-full bg-white/10 blur-3xl" />
+          </div>
+
+          <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-12">
+              What Drives Modstack
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+              {[
+                {
+                  title: "Problem-First Thinking",
+                  desc: "We start by understanding real business problems before writing a single line of code.",
+                },
+                {
+                  title: "Scalable Solutions",
+                  desc: "Our systems are designed to grow with your business, not limit it.",
+                },
+                {
+                  title: "Clean & Reliable Code",
+                  desc: "Readable, maintainable, and secure codebases built for the long term.",
+                },
+                {
+                  title: "Long-Term Partnership",
+                  desc: "We believe in building lasting relationships, not just delivering projects.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="group p-6 rounded-2xl bg-white/10 backdrop-blur hover:bg-white/15 transition"
+                >
+                  <h3 className="text-xl font-bold mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-blue-100 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
+
       </main>
       <Footer />
     </div>

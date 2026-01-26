@@ -61,24 +61,49 @@ export default function PortfolioPage() {
         </section>
 
         {/* Filter Buttons */}
-        <section className="bg-white border-b border-[#e5e7eb] sticky top-16 z-40">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex flex-wrap gap-3">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category === "All" ? null : category)}
-                  className={`px-4 py-2 rounded-lg font-medium transition ${(category === "All" && selectedCategory === null) || selectedCategory === category
-                    ? "bg-[#3b82f6] text-white"
-                    : "bg-[#f3f4f6] text-[#374151] hover:bg-[#e5e7eb]"
-                    }`}
-                >
-                  {category}
-                </button>
-              ))}
+        <section className=" z-40 border-b border-neutral-200 bg-white/80 backdrop-blur">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+
+            <div className="flex flex-wrap items-center gap-2">
+              {categories.map((category) => {
+                const isActive =
+                  (category === "All" && selectedCategory === null) ||
+                  selectedCategory === category
+
+                return (
+                  <button
+                    key={category}
+                    onClick={() =>
+                      setSelectedCategory(category === "All" ? null : category)
+                    }
+                    className={`
+              relative
+              px-4 py-1.5
+              text-sm font-medium
+              rounded-full
+              transition-all duration-300
+              backdrop-blur
+
+              ${isActive
+                        ? "text-white bg-gradient-to-r from-blue-600 to-indigo-600 shadow-md shadow-blue-500/20"
+                        : "text-neutral-700 bg-neutral-100 hover:bg-neutral-200"
+                      }
+            `}
+                  >
+                    {category}
+
+                    {/* Subtle glow */}
+                    {isActive && (
+                      <span className="absolute inset-0 -z-10 rounded-full blur-md bg-blue-500/40" />
+                    )}
+                  </button>
+                )
+              })}
             </div>
+
           </div>
         </section>
+
 
         {/* Projects Grid */}
         <section className="py-20 bg-white">
