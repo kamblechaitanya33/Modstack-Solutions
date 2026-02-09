@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import Image from "next/image"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     "IT consulting",
   ],
   icons: {
-    icon: [ 
+    icon: [
       {
         url: "/icon-light-32x32.png",
         media: "(prefers-color-scheme: light)",
@@ -41,31 +42,53 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
+      <body className={_geist.className}>
+
         {children}
 
-        {/* Floating WhatsApp Button */}
-        <a
-          href="https://wa.me/919999999999"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="fixed bottom-6 right-6 z-50"
-        >
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-            alt="WhatsApp"
-            className="w-14 h-14 rounded-full shadow-lg hover:scale-110 transition-transform"
-          />
-        </a>
+        {/* Floating Social Buttons */}
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/919702571015"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative w-14 h-14 rounded-full bg-white shadow-lg hover:scale-105 transition-all"
+            aria-label="Chat on WhatsApp"
+          >
+            <Image
+              src="/whatapp_icon.png"
+              alt="WhatsApp"
+              fill
+              className="object-contain p-0"
+            />
+          </a>
+
+          {/* Instagram */}
+          {/* <a
+            href="https://www.instagram.com/slaywith.clawdia?igsh=MTl4M3BvNGpsemVycA=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative w-14 h-14 rounded-full bg-white shadow-lg hover:scale-105 transition-all"
+            aria-label="Visit Instagram"
+          >
+            <Image
+              src="/instagram_icon.png"
+              alt="Instagram"
+              fill
+              className="object-contain p-3"
+            />
+          </a> */}
+        </div>
 
         <Analytics />
       </body>
     </html>
   )
 }
-
