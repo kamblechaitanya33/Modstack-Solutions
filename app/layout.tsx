@@ -1,12 +1,20 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Lexend } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Image from "next/image"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+// const _geist = Geist({ subsets: ["latin"] })
+// const _geistMono = Geist_Mono({ subsets: ["latin"] })
+
+
+const lexend = Lexend({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-lexend",
+})
+
 
 export const metadata: Metadata = {
   title: "Modstack Solutions - IT & Software Services",
@@ -46,9 +54,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={_geist.className}>
+       <html lang="en">
 
+      <body className={lexend.className}>
+        
         {children}
 
         {/* Floating Social Buttons */}
