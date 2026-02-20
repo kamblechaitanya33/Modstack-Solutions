@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Lexend } from "next/font/google"
+import { Sora } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Image from "next/image"
 import "./globals.css"
@@ -9,10 +9,9 @@ import "./globals.css"
 // const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 
-const lexend = Lexend({
+const sora = Sora({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-lexend",
 })
 
 
@@ -56,7 +55,7 @@ export default function RootLayout({
   return (
        <html lang="en">
 
-      <body className={lexend.className}>
+      <body className={sora.className}>
         
         {children}
 
