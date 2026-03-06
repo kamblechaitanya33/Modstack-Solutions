@@ -1,12 +1,15 @@
 "use client"
 
 import type React from "react"
-import { useState, type FormEvent } from "react"
+import { useState, useRef, type FormEvent } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Mail, Phone, MapPin, Send } from "lucide-react"
+import { Mail, Phone, MapPin, Send, User, MessageSquare, PhoneCall, Info } from "lucide-react"
+import emailjs from "@emailjs/browser"
+import { toast } from "sonner"
 
 export default function ContactPage() {
+  const formRef = useRef<HTMLFormElement>(null)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,8 +19,6 @@ export default function ContactPage() {
   })
 
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
-  const [error, setError] = useState("")
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
 
   const handleChange = (
@@ -40,23 +41,25 @@ export default function ContactPage() {
 
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors)
+      toast.error("Please fill in all required fields")
       return
     }
 
     setLoading(true)
-    setError("")
-    setSuccess(false)
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      })
+      // Use your EmailJS credentials
+      // You can also use environment variables for security
+      const result = await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_id",
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_id",
+        formRef.current!,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "public_key"
+      )
 
-      if (!response.ok) throw new Error("Failed to submit form")
+      if (result.text !== "OK") throw new Error("Failed to send message")
 
-      setSuccess(true)
+      toast.success("Message sent successfully! We will get back to you soon.")
       setFormData({
         name: "",
         email: "",
@@ -64,10 +67,9 @@ export default function ContactPage() {
         subject: "",
         message: "",
       })
-
-      setTimeout(() => setSuccess(false), 5000)
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong")
+      console.error("EmailJS Error:", err)
+      toast.error("Something went wrong. Please try again later.")
     } finally {
       setLoading(false)
     }
@@ -79,129 +81,143 @@ export default function ContactPage() {
 
       <main className="flex-1">
         {/* HERO */}
-        <section className="relative bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617] text-white py-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.25),transparent_70%)]" />
-          <div className="relative mx-auto max-w-7xl px-4">
-            <h1 className="text-5xl font-extrabold mb-4">
+        <section className="relative bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617] text-white py-24 overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.3),transparent_70%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.2),transparent_70%)]" />
+          <div className="relative mx-auto max-w-7xl px-4 text-center">
+            <h1 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-white">
               Let’s Build Something Great
             </h1>
-            <p className="max-w-2xl text-lg text-slate-300">
-              Reach out to discuss your ideas, projects, or collaborations.
+            <p className="mx-auto max-w-2xl text-xl text-slate-300 leading-relaxed">
+              Have a question or a project in mind? Reach out to us and let's transform your ideas into digital reality.
             </p>
           </div>
         </section>
 
         {/* CONTENT */}
-        <section className="py-24">
-          <div className="mx-auto max-w-6xl px-4 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <section className="py-24 -mt-10">
+          <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-            {/* INFO */}
-            <div className="flex flex-col justify-center space-y-6">
-              {[
-                {
-                  icon: <Mail />,
-                  title: "Email",
-                  value: "modstacksolutions@gmail.com",
-                  href: "mailto:modstacksolutions@gmail.com",
-                },
-                {
-                  icon: <Phone />,
-                  title: "Phone",
-                  value: "+91 9702571015",
-                  href: "tel:+919702571015",
-                },
-                {
-                  icon: <MapPin />,
-                  title: "Location",
-                  value: "Mumbai, Maharashtra, India",
-                },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 p-6 rounded-2xl bg-white shadow-lg hover:shadow-xl transition"
-                >
-                  <div className="p-3 rounded-xl bg-blue-50 text-blue-600">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900">
-                      {item.title}
-                    </h3>
-                    {item.href ? (
-                      <a href={item.href} className="text-blue-600 hover:underline">
-                        {item.value}
-                      </a>
-                    ) : (
-                      <p className="text-slate-600">{item.value}</p>
-                    )}
+            {/* INFO - LEFT SIDE */}
+            <div className="lg:col-span-4 space-y-6">
+              <div className="p-8 rounded-3xl bg-white shadow-2xl shadow-blue-100/50 border border-slate-100 h-full flex flex-col justify-between">
+                <div>
+                  <h2 className="text-3xl font-bold text-slate-900 mb-2">Get in Touch</h2>
+                  <p className="text-slate-500 mb-8">Our team typically responds within 24 hours.</p>
+
+                  <div className="space-y-8">
+                    {[
+                      {
+                        icon: <Mail className="w-6 h-6" />,
+                        title: "Email Us",
+                        value: "modstacksolutions@gmail.com",
+                        href: "mailto:modstacksolutions@gmail.com",
+                        color: "bg-blue-50 text-blue-600"
+                      },
+
+
+                      {
+                        icon: <Phone className="w-6 h-6" />,
+                        title: "Call Us",
+                        value: "+91 9702571015",
+                        href: "tel:+919702571015",
+                        color: "bg-emerald-50 text-emerald-600"
+                      },
+                      {
+                        icon: <MapPin className="w-6 h-6" />,
+                        title: "Visit Us",
+                        value: "Mumbai, Maharashtra, India",
+                        color: "bg-orange-50 text-orange-600"
+                      },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-start gap-5 group">
+                        <div className={`p-4 rounded-2xl ${item.color} group-hover:scale-110 transition-transform duration-300`}>
+                          {item.icon}
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-slate-400 uppercase tracking-wider mb-1">{item.title}</p>
+                          {item.href ? (
+                            <a href={item.href} className="text-lg font-semibold text-slate-900 hover:text-blue-600 transition-colors">
+                              {item.value}
+                            </a>
+                          ) : (
+                            <p className="text-lg font-semibold text-slate-900">{item.value}</p>
+                          )}
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+
+                <div className="mt-12 p-6 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+                  <h3 className="font-bold text-lg mb-2">Work with us?</h3>
+                  <p className="text-blue-100 text-sm mb-4">We're always looking for talented individuals to join our team.</p>
+                  <a href="/portfolio" className="text-white font-semibold underline underline-offset-4 hover:text-blue-200">View our projects →</a>
+                </div>
+              </div>
             </div>
 
-            {/* FORM */}
-            <div className="lg:col-span-2 bg-white/80 backdrop-blur rounded-3xl shadow-xl border border-slate-200 p-10">
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">
-                Send a Message
-              </h2>
+            {/* FORM - RIGHT SIDE */}
+            <div className="lg:col-span-8 bg-white rounded-3xl shadow-2xl shadow-blue-100/50 border border-slate-100 p-8 md:p-12 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10 opacity-50" />
 
-              {success && (
-                <div className="mb-6 rounded-lg bg-green-100 text-green-700 px-4 py-3">
-                  ✅ Message sent successfully!
-                </div>
-              )}
+              <div className="mb-10">
+                <h2 className="text-3xl font-bold text-slate-900 mb-2">Send a Message</h2>
+                <p className="text-slate-500">Fill out the form below and we'll be in touch shortly.</p>
+              </div>
 
-              {error && (
-                <div className="mb-6 rounded-lg bg-red-100 text-red-700 px-4 py-3">
-                  ❌ {error}
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <Input
-                    label="Name"
+                    label="Full Name"
                     name="name"
                     required
+                    icon={<User className="w-4 h-4" />}
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Enter your name"
+                    placeholder="John Doe"
                     error={fieldErrors.name}
                   />
 
                   <Input
-                    label="Email ID"
+                    label="Email Address"
                     name="email"
                     type="email"
                     required
+                    icon={<Mail className="w-4 h-4" />}
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Enter your email address"
+                    placeholder="john@example.com"
                     error={fieldErrors.email}
                   />
                 </div>
 
-                <Input
-                  label="Phone No"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your phone number"
-                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <Input
+                    label="Phone Number"
+                    name="phone"
+                    icon={<PhoneCall className="w-4 h-4" />}
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+91 00000 00000"
+                  />
 
-                <Input
-                  label="Subject"
-                  name="subject"
-                  required
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="Enter subject"
-                  error={fieldErrors.subject}
-                />
+                  <Input
+                    label="Subject"
+                    name="subject"
+                    required
+                    icon={<Info className="w-4 h-4" />}
+                    value={formData.subject}
+                    onChange={handleChange}
+                    placeholder="How can we help?"
+                    error={fieldErrors.subject}
+                  />
+                </div>
 
                 {/* MESSAGE */}
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700">
+                <div className="space-y-2">
+                  <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                    <MessageSquare className="w-4 h-4 text-slate-400" />
                     Message <span className="text-red-500">*</span>
                   </label>
 
@@ -209,20 +225,19 @@ export default function ContactPage() {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Describe your project..."
+                    placeholder="Tell us about your project requirements, goals, and any specific questions you have..."
                     className={`
-                      mt-2 w-full h-40 rounded-xl border px-4 py-3
-                      outline-none resize-none
-                      ${
-                        fieldErrors.message
-                          ? "border-red-500 focus:ring-2 focus:ring-red-500"
-                          : "border-slate-300 focus:ring-2 focus:ring-blue-500"
+                      w-full h-44 rounded-2xl border px-5 py-4
+                      outline-none resize-none transition-all duration-300
+                      ${fieldErrors.message
+                        ? "border-red-500 bg-red-50/30 focus:ring-4 focus:ring-red-500/10"
+                        : "border-slate-200 bg-slate-50/30 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
                       }
                     `}
                   />
 
                   {fieldErrors.message && (
-                    <p className="mt-1 text-sm text-red-500">
+                    <p className="mt-1 text-xs text-red-500 font-medium">
                       {fieldErrors.message}
                     </p>
                   )}
@@ -233,27 +248,30 @@ export default function ContactPage() {
                   type="submit"
                   disabled={loading}
                   className="
-                    w-full
-                    inline-flex items-center justify-center gap-2
-                    px-6 py-4
-                    rounded-lg
-                    bg-gradient-to-r from-[#2563eb] to-[#1e40af]
-                    text-sm font-semibold text-white
-                    shadow-md
-                    transition-all
-                    hover:shadow-lg
-                    disabled:opacity-60
+                    relative overflow-hidden group
+                    w-full md:w-auto
+                    inline-flex items-center justify-center gap-3
+                    px-10 py-5
+                    rounded-2xl
+                    bg-blue-600
+                    text-base font-bold text-white
+                    shadow-xl shadow-blue-200
+                    transition-all duration-300
+                    hover:bg-blue-700 hover:-translate-y-1 hover:shadow-blue-300
+                    active:translate-y-0
+                    disabled:opacity-70
                     disabled:cursor-not-allowed
+                    disabled:hover:translate-y-0
                   "
                 >
                   {loading ? (
                     <>
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
-                      Sending...
+                      <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                      Sending Message...
                     </>
                   ) : (
                     <>
-                      <Send size={18} />
+                      <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                       Send Message
                     </>
                   )}
@@ -270,29 +288,31 @@ export default function ContactPage() {
 }
 
 /* INPUT COMPONENT */
-function Input({ label, error, required, ...props }: any) {
+function Input({ label, error, required, icon, ...props }: any) {
   return (
-    <div>
-      <label className="block text-sm font-semibold text-slate-700">
+    <div className="space-y-2">
+      <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
+        {icon && <span className="text-slate-400">{icon}</span>}
         {label}
-        {required && <span className="ml-1 text-red-500">*</span>}
+        {required && <span className="text-red-500">*</span>}
       </label>
 
-      <input
-        {...props}
-        className={`
-          mt-2 w-full rounded-xl border px-4 py-3
-          outline-none
-          ${
-            error
-              ? "border-red-500 focus:ring-2 focus:ring-red-500"
-              : "border-slate-300 focus:ring-2 focus:ring-blue-500"
-          }
-        `}
-      />
+      <div className="relative">
+        <input
+          {...props}
+          className={`
+            w-full rounded-2xl border px-5 py-4
+            outline-none transition-all duration-300
+            ${error
+              ? "border-red-500 bg-red-50/30 focus:ring-4 focus:ring-red-500/10"
+              : "border-slate-200 bg-slate-50/30 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
+            }
+          `}
+        />
+      </div>
 
       {error && (
-        <p className="mt-1 text-sm text-red-500">{error}</p>
+        <p className="mt-1 text-xs text-red-500 font-medium">{error}</p>
       )}
     </div>
   )

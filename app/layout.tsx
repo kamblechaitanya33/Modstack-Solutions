@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Sora } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Image from "next/image"
+import { Toaster } from "sonner"
 import "./globals.css"
 
 // const _geist = Geist({ subsets: ["latin"] })
@@ -53,10 +54,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-       <html lang="en">
+    <html lang="en">
 
       <body className={sora.className}>
-        
+        <Toaster richColors position="top-right" />
         {children}
 
         {/* Floating Social Buttons */}
