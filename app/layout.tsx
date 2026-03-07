@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Sora } from "next/font/google"
+import { Nunito } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import Image from "next/image"
 import { Toaster } from "sonner"
@@ -10,11 +10,11 @@ import "./globals.css"
 // const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 
-const sora = Sora({
+const nunito = Nunito({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 })
-
 
 export const metadata: Metadata = {
   title: "Modstack Solutions - IT & Software Services",
@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className={sora.className}>
+      <body className={nunito.className}>
         <Toaster richColors position="top-right" />
         {children}
 
