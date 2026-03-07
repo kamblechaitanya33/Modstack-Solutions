@@ -48,8 +48,6 @@ export default function ContactPage() {
     setLoading(true)
 
     try {
-      // Use your EmailJS credentials
-      // You can also use environment variables for security
       const result = await emailjs.sendForm(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_id",
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_id",
@@ -108,7 +106,7 @@ export default function ContactPage() {
 
             {/* INFO - LEFT SIDE */}
             <div className="lg:col-span-4">
-              <div className="bg-white rounded-3xl shadow-2xl shadow-blue-100/50 border border-blue-600 p-6 md:p-10 relative overflow-hidden">
+              <div className="bg-white rounded-3xl shadow-2xl shadow-blue-100/50 border border-blue-600 p-6 md:p-8 relative overflow-hidden">
 
                 <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
                   Get in Touch
@@ -143,14 +141,19 @@ export default function ContactPage() {
                   ].map((item, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-4 p-3 md:p-4 rounded-xl hover:bg-slate-50 transition"
+                      className="flex items-start sm:items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:bg-slate-50 transition"
                     >
+
+                      {/* Icon */}
                       <div
-                        className={`flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-xl ${item.color}`}
+                        className={`flex-shrink-0 flex items-center justify-center 
+        w-9 h-9 sm:w-11 sm:h-11 
+        rounded-xl ${item.color}`}
                       >
                         {item.icon}
                       </div>
 
+                      {/* Text */}
                       <div className="flex flex-col">
                         <span className="text-xs font-medium text-slate-400 uppercase tracking-wide">
                           {item.title}
@@ -159,16 +162,17 @@ export default function ContactPage() {
                         {item.href ? (
                           <a
                             href={item.href}
-                            className="text-sm md:text-base font-semibold text-slate-800 hover:text-blue-600 transition"
+                            className="text-sm sm:text-base font-semibold text-slate-800 hover:text-blue-600 transition"
                           >
                             {item.value}
                           </a>
                         ) : (
-                          <span className="text-sm md:text-base font-semibold text-slate-800">
+                          <span className="text-sm sm:text-base font-semibold text-slate-800">
                             {item.value}
                           </span>
                         )}
                       </div>
+
                     </div>
                   ))}
                 </div>
