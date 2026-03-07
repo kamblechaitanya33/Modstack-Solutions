@@ -267,13 +267,14 @@ export default function ContactPage() {
                   disabled={loading}
                   className="
   relative overflow-hidden group
-  w-full
-  flex items-center justify-center gap-3
-  px-10 py-5
-  rounded-2xl
+  w-full sm:w-auto
+  flex items-center justify-center gap-2 sm:gap-3
+  px-6 sm:px-8 lg:px-10
+  py-3 sm:py-4 lg:py-5
+  rounded-xl sm:rounded-2xl
   bg-blue-600
-  text-base font-bold text-white
-  shadow-xl shadow-blue-200
+  text-sm sm:text-base font-semibold sm:font-bold text-white
+  shadow-lg sm:shadow-xl shadow-blue-200
   transition-all duration-300
   hover:bg-blue-700 hover:-translate-y-1 hover:shadow-blue-300
   active:translate-y-0
@@ -281,6 +282,7 @@ export default function ContactPage() {
   disabled:cursor-not-allowed
   disabled:hover:translate-y-0
 "
+
                 >
                   {loading ? (
                     <>
