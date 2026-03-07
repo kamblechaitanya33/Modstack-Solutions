@@ -56,7 +56,7 @@ const detailedServices = [
     ],
     technologies: ["AWS", "Azure", "Google Cloud", "Docker"],
     icon: "",
-    imagePath: "api_icon.png",
+    imagePath: "icon_api.png",
   },
 
   {
